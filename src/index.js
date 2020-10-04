@@ -1,10 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App'
+import { Provider }  from 'react-redux';
+import reducers from './reducers'
+import middleware from './/middleware';
+import { createStore } from 'redux';
 
+const store = createStore(reducers,[], middleware);
+window.store = store
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 )
